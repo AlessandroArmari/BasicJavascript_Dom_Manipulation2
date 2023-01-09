@@ -1,4 +1,4 @@
-//1 Exercise: creatin a "home_made" html list
+// Exercise 1: creatin a "home_made" html list
 
 //Creating an array
 
@@ -60,3 +60,82 @@ var doAll = () => {
 
 var button = document.getElementById("button"); //I assign the html button to "button" java variable
 button.addEventListener("click", doAll); //Here I assign the function "doAll" to the button
+
+//EXERCISE 2---> print html window dimension as soon as they change
+
+var dim = document.getElementById("dim");
+
+//everyTime I change windows dimensions (like: onclick!)
+window.onresize = (event) => {
+  //event.target--->returns: the object on wich the event occur
+  var width = event.target.innerWidth;
+  var height = event.target.innerHeight;
+
+  //I could've typed:
+  //var width = window.innerWidth;
+  //var height = windows.innerHeight;
+  //...and it would've worked as well!
+
+  //here I change the html
+  dim.innerHTML = width + "px" + ", " + height + "px";
+
+  //here I print dimensions on console
+  console.log(width, height);
+};
+
+// DA CORREGGERE
+
+const users = [
+  {
+    id: 1,
+    name: "Federico",
+    surname: "Tarascio",
+    indirizzo: {
+      via: "Via Roma",
+      civico: 1,
+    },
+  },
+  {
+    id: 2,
+    name: "Mario",
+    surname: "Rossi",
+    indirizzo: {
+      via: "Via Roma",
+      civico: 1,
+    },
+  },
+  {
+    id: 3,
+    name: "Luca",
+    surname: "Verdi",
+    indirizzo: {
+      via: "Via Roma",
+      civico: 1,
+    },
+  },
+];
+
+const fromUserArrayToElement = (users = []) => {
+  return users.map((user) => {
+    const div = document.createElement("div");
+    const h1 = document.createElement("h1");
+
+    // in -> ritorna true se una chiave esiste in un oggetto, false altrimenti
+    if ("name" in user && "surname" in user) {
+      h1.innerText = user.name + " " + user.surname;
+    }
+
+    const h3 = document.createElement("h3");
+    h3.innerText = user.indirizzo.via + ", " + user.indirizzo.civico;
+
+    div.append(h1, h3);
+
+    return div;
+  });
+};
+
+const elements = fromUserArrayToElement(users);
+
+const body = getBody();
+
+addElementsToBody(body, elements);
