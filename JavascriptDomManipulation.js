@@ -38,6 +38,7 @@ SYNTAX:   array.map(myFunction)
 
 var arrayFromStringToHeading = (array = []) => {
   return array.map((elem, i) => {
+    //Here .map behaves lik a forEach!
     var e = document.createElement("h1");
     e.innerText = i + 1 + " " + elem;
     return e;
