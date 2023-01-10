@@ -83,7 +83,7 @@ window.onresize = (event) => {
   console.log(width, height);
 };
 
-// DA CORREGGERE
+//EXERCISE 3
 
 const users = [
   {
@@ -120,7 +120,7 @@ const fromUserArrayToElement = (users = []) => {
     const div = document.createElement("div");
     const h1 = document.createElement("h1");
 
-    // in -> ritorna true se una chiave esiste in un oggetto, false altrimenti
+    // in -> RETURNS TRUE IF KEY EXISTS, OTHERWISE FALSE
     if ("name" in user && "surname" in user) {
       h1.innerText = user.name + " " + user.surname;
     }
@@ -129,13 +129,14 @@ const fromUserArrayToElement = (users = []) => {
     h3.innerText = user.indirizzo.via + ", " + user.indirizzo.civico;
 
     div.append(h1, h3);
-
+    div.style.backgroundColor = "red";
     return div;
   });
 };
 
-const elements = fromUserArrayToElement(users);
+const elements = fromUserArrayToElement(users); //the function returns a div
 
 const body = getBody();
 
-addElementsToBody(body, elements);
+//We use the previous crafted method to append children to the body
+addElementsToBody(body, elements); //attacching the div to the body
